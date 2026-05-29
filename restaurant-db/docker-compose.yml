@@ -1,0 +1,13 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: restaurant-db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: restaurant-db
+      POSTGRES_DB: restaurant-db
+      POSTGRES_USER: restaurant-db
+    ports:
+      - "54323:5432"
+    volumes:
+      - ./volume/db:/var/lib/postgresql/data
