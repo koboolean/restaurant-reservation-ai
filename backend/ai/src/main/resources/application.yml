@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ai
+  profiles:
+    active: local
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: debug

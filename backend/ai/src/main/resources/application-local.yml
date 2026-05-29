@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  ## Database
+  datasource:
+    url: jdbc:postgresql://localhost:54323/restaurant-db
+    username: restaurant-db
+    password: restaurant-db
+    driver-class-name: org.postgresql.Driver
+  ## JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  ai:
+    ## ollama
+    ollama:
+      base-url: http://localhost:11434
+      init:
+        pull-model-strategy: when_missing
+      chat:
+        model: gemma4:31b-cloud
+    ## chat memory
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+  devtools:
+    restart:
+      enabled: true
