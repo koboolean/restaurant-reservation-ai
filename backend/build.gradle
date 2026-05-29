@@ -39,4 +39,8 @@ subprojects {
     tasks.withType(Test).configureEach {
         useJUnitPlatform()
     }
+
+    tasks.matching { it.name == 'bootRun' }.configureEach {
+        jvmArgs '--enable-native-access=ALL-UNNAMED'
+    }
 }
