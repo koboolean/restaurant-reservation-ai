@@ -24,11 +24,11 @@ public class Reservation {
     @Column(comment = "예약일시")
     private LocalDateTime reservationTime;
 
-    @JoinColumn(comment = "고객 정보")
+    @JoinColumn(comment = "고객 정보", name = "customer_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
 
-    @JoinColumn(comment = "테이블 정보")
+    @JoinColumn(comment = "테이블 정보", name = "restaurant_table_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private RestaurantTable restaurantTable;
 
