@@ -2,10 +2,7 @@ package koboolean.ai.entity;
 
 import jakarta.persistence.*;
 import koboolean.ai.domain.ReservationStatus;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -40,6 +37,7 @@ public class Reservation {
 
     @Column(comment = "예약상태")
     @Enumerated(EnumType.STRING)
+    @Setter
     private ReservationStatus status;
 
 }

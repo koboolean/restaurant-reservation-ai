@@ -1,10 +1,7 @@
 package koboolean.ai.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Builder
@@ -25,6 +22,7 @@ public class Customer {
     private String name;
 
     @Column(comment = "방문인원")
+    @Setter
     private int visitCount;
 
     @Column(comment = "메모정보")
