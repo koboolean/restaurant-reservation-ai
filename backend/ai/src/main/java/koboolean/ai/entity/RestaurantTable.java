@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class RestaurantTable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(comment = "최대 수용인원")
