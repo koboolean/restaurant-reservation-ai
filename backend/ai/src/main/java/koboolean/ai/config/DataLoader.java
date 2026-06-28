@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
 
     private final RestaurantTableRepository tableRepository;
-    private final CustomerRepository customerRepository;
+//    private final CustomerRepository customerRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -26,14 +26,14 @@ public class DataLoader implements CommandLineRunner {
             tableRepository.save(RestaurantTable.builder().capacity(8).type(TableType.ROOM).build());
         }
 
-        if(customerRepository.count() == 0){
-            customerRepository.save(Customer.builder()
-                    .name("홍길동")
-                    .phoneNumber("010-1234-5678")
-                    .visitCount(10)
-                    .memo("레드와인을 선호함")
-                    .build());
-        }
+//        if(customerRepository.count() == 0){
+//            customerRepository.save(Customer.builder()
+//                    .name("홍길동")
+//                    .phoneNumber("010-1234-5678")
+//                    .visitCount(10)
+//                    .memo("레드와인을 선호함")
+//                    .build());
+//        }
 
     }
 
