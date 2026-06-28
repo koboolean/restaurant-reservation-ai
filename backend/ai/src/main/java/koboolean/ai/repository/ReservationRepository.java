@@ -26,6 +26,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             """
             select r
               from Reservation r
+              join fetch r.customer
+              join fetch r.restaurantTable
              where r.customer.phoneNumber = :phoneNumber
                and r.reservationTime > CURRENT_TIMESTAMP
                and r.status = 'CONFIRMED'

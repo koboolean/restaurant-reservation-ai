@@ -75,14 +75,20 @@ public class GourmetBotTools {
         return ReservationDTO.from(reservation);
     }
 
-    @Tool(description = "고객의 예정된 예약을 취소합니다.")
-    public List<ReservationDTO> cancelReservation(BookingDTOs.CancelReservationRequest request) {
+    @Tool(description = "고객의 예정된 예약을 취소합니다. 예약 취소가 성공하면 true가 반환되며 취소가 실패하면 false가 반환됩니다.")
+    public Boolean cancelReservation(BookingDTOs.CancelReservationRequest request) {
 
-        List<Reservation> reservations =
-                service.cancelReservation(request.phoneNumber());
+        Boolean cancelled = service.cancelReservation(request.reservationId());
 
-        return reservations.stream()
-                .map(ReservationDTO::from)
-                .toList();
+        return cancelled;
+    }
+
+    @Tool(description = "고객의 예약 내역을 조회합니다.")
+    public List<ReservationDTO> checkMyBooking(BookingDTOs.MyBookingRequest request){
+
+        List<Reservation> reservations = service.getMyBookings(request.phoneNumber());
+
+        return reservations.stream().map(ReservationDTO::from).toList();
+
     }
 }

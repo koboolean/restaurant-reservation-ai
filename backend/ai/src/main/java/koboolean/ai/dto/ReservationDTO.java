@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public record ReservationDTO(
 
         @JsonPropertyDescription("예약 ID")
-        Long id,
+        Long reservationId,
 
         @JsonPropertyDescription("예약 일시")
         LocalDateTime reservationTime,

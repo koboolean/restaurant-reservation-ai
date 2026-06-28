@@ -12,7 +12,7 @@ allprojects {
 }
 
 ext {
-    set('springAiVersion', '2.0.0-M8')
+    set('springAiVersion', '2.0.0')
 }
 
 subprojects {

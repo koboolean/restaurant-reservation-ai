@@ -126,23 +126,31 @@ public class ReservationService {
 
     /**
      * 예약 취소: 모호성 해결 및 상태 변경
-     * @param phoneNumber 핸드폰번호
+     * @param reservationId 예약번호
      * @return 결과
      */
     @Transactional
-    public List<Reservation> cancelReservation(String phoneNumber) {
+    public Boolean cancelReservation(Long reservationId) {
 
-        List<Reservation> activeReservations =
-                reservationRepository.findUpcomingReservations(phoneNumber);
+        Reservation activeReservation = reservationRepository.findById(reservationId)
+                .orElse(null);
 
-        if (activeReservations.isEmpty()) {
-            return List.of();
+        if (activeReservation != null) {
+            activeReservation.setStatus(ReservationStatus.CANCELLED);
+
+            return true;
         }
 
-        if (activeReservations.size() == 1) {
-            activeReservations.getFirst().setStatus(ReservationStatus.CANCELLED);
-        }
+        return false;
+    }
 
-        return activeReservations;
+    /**
+     * 예약 확인
+     * @param phoneNumber 핸드폰번호
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public List<Reservation> getMyBookings(String phoneNumber){
+        return reservationRepository.findUpcomingReservations(phoneNumber);
     }
 }

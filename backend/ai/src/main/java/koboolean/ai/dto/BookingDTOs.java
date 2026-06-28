@@ -36,7 +36,12 @@ public class BookingDTOs {
     ){}
 
     public record CancelReservationRequest(
-            @JsonPropertyDescription("예약자 연락처 (010-XXXX-XXXX)")
+            @JsonPropertyDescription("예약 ID")
+            Long reservationId
+    ){}
+
+    public record MyBookingRequest(
+            @JsonPropertyDescription("예약자 연락처 (010-xxxx-xxxx)")
             String phoneNumber
     ){}
 }
