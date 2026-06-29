@@ -2,6 +2,7 @@ package koboolean.multiai.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import koboolean.multiai.domain.ReservationStatus;
+import koboolean.multiai.entity.Reservation;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -35,4 +36,16 @@ public record ReservationDTO(
 
 ) {
 
+    public static ReservationDTO from(Reservation reservation) {
+        return ReservationDTO.builder()
+                .reservationId(reservation.getId())
+                .reservationTime(reservation.getReservationTime())
+                .customer(CustomerDTO.from(reservation.getCustomer()))
+                .restaurantTable(RestaurantTableDTO.from(reservation.getRestaurantTable()))
+                .partySize(reservation.getPartySize())
+                .allergies(reservation.getAllergies())
+                .status(reservation.getStatus())
+                .specialRequests(reservation.getSpecialRequests())
+                .build();
+    }
 }

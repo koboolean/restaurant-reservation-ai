@@ -35,7 +35,7 @@ public class OrderService {
      * @param orderItems
      * @return
      */
-    private int calculateEstimate(List<BookingDTOs.OrderItemRequest> orderItems){
+    public int calculateEstimate(List<BookingDTOs.OrderItemRequest> orderItems){
         int total = 0;
 
         for(BookingDTOs.OrderItemRequest item : orderItems){
