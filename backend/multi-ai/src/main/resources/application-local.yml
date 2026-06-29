@@ -1,0 +1,46 @@
+server:
+  port: 8090
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  ## Database
+  datasource:
+    url: jdbc:postgresql://localhost:54323/restaurant-db
+    username: restaurant-db
+    password: restaurant-db
+    driver-class-name: org.postgresql.Driver
+  ## JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  ai:
+    ## ollama
+    ollama:
+      base-url: http://localhost:11434
+      init:
+        pull-model-strategy: when_missing
+      chat:
+        model: gemma4:31b-cloud
+#    openai:
+#      api-key: ${OPEN_AI_KEY}
+    ## chat memory
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        table-name: vector_store
+        distance-type: cosine_distance
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+
+  devtools:
+    restart:
+      enabled: true

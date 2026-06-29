@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ai
+  profiles:
+    active: local
+  jpa:
+    open-in-view: false
+
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: debug
+server:
+  port: 8081
